@@ -45,7 +45,7 @@
         </div>
       </section>
       <section class="form-section">
-        <form action="/">
+        <form action="./">
           <label for="name">CARDHOLDER NAME</label>
           <input
             type="text"
@@ -60,6 +60,7 @@
             name="card-number"
             id="form-card-number"
             placeholder="e.g. 1234 5678 9123 0000"
+            pattern="\d{16}|\b\d{16}\b"
           />
           <br />
           <div class="details-card">
@@ -71,12 +72,14 @@
                 name="exp-date"
                 id="form-exp-date__mm"
                 placeholder="MM"
+                pattern="\d{2}|\b\d{2}\b"
               />
               <input
                 type="number"
                 name="exp-date"
                 id="form-exp-date__yy"
                 placeholder="YY"
+                pattern="\d{2}|\b\d{2}\b"
               />
             </div>
 
@@ -96,5 +99,6 @@
         </form>
       </section>
     </div>
+    <script src="./main.js"></script>
   </body>
 </html>

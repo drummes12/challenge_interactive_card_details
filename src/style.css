@@ -19,7 +19,7 @@ body {
   position: fixed;
   overflow: hidden;
 
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Space Grotesk", monospace;
 }
 
 .page {
@@ -116,6 +116,7 @@ body {
 }
 .card-container .card-front .card-info .card-name {
   text-align: left;
+  text-transform: uppercase;
 }
 .card-container .card-front .card-info .card-exp-date {
   text-align: right;
@@ -157,7 +158,7 @@ body {
 .form-section #form-exp-date__mm,
 .form-section #form-exp-date__yy,
 .form-section #form-cvc {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Space Grotesk", monospace;
   font-size: 18px;
   padding: 14px;
   margin-top: 8px;
@@ -173,7 +174,10 @@ body {
 }
 .form-section #form-exp-date__mm,
 .form-section #form-exp-date__yy {
-  width: 40%;
+  width: 45%;
+}
+.form-section #form-exp-date__mm {
+  margin-right: 8px;
 }
 .form-section #form-cvc {
   width: 100%;
@@ -184,7 +188,7 @@ body {
 }
 
 .form-section .form-submit {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Space Grotesk", monospace;
   font-size: 18px;
   width: 100%;
   background-color: var(--very-dark-violet);
@@ -198,7 +202,7 @@ body {
 @media (max-width: 1199px) {
   .page {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 40% auto);
+    grid-template-rows: repeat(2, 380px auto);
     grid-template-areas:
       "card"
       "form";
@@ -243,7 +247,7 @@ body {
     width: 10px;
   }
   .card-container .card-front .card-number {
-    font-size: 23px;
+    font-size: 26px;
   }
   .card-container .card-front .card-info span {
     font-size: 12px;
@@ -262,8 +266,20 @@ body {
     height: 100%;
   }
   .card-container .card-back .card-back-content p {
-    top: 64px;
+    top: 73px;
     right: 40px;
     font-size: 12px;
+  }
+
+  .form-section {
+    margin-top: 30px;
+  }
+  .form-section form {
+    margin: 0;
+    padding: 20px;
+    width: 100%;
+  }
+  .form-section label {
+    font-size: 14px;
   }
 }
