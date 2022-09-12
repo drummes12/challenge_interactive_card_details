@@ -95,3 +95,102 @@ form_card_cvc.addEventListener('input', (event) => {
     ? card_cvc.innerText = '000'
     : card_cvc.innerText = event.target.value;
 });
+
+const confirm = document.querySelector('.form');
+
+confirm.addEventListener('submit', (event) => {
+  try {
+    let error = true;
+    const name = document.querySelector('#form-name');
+    const error_name = document.querySelector('#error-name');
+
+    if (name.value === '') {
+      error_name.innerText = 'Can\'t be blank';
+      name.classList.add('error');
+    } else if (/[0-9]/.test(name.value)) {
+      error_name.innerText = 'Wrong format, letters only';
+      name.classList.add('error');
+    } else {
+      error_name.innerText = '';
+      name.classList.remove('error');
+      error = false;
+    }
+
+    error = true;
+    const number = document.querySelector('#form-card-number');
+    const error_number = document.querySelector('#error-number');
+
+    if (number.value === '') {
+      error_number.innerText = 'Can\'t be blank';
+      number.classList.add('error');
+    } else if (number.value.length < 16) {
+      error_number.innerText = 'Wrong format, 16 numbers required';
+      number.classList.add('error');
+    } else {
+      error_number.innerText = '';
+      number.classList.remove('error');
+      error = false;
+    }
+
+    error = true;
+    const exp_date_mm = document.querySelector('#form-exp-date__mm');
+    const exp_date_yy = document.querySelector('#form-exp-date__yy');
+    const error_exp_date = document.querySelector('#error-exp-date');
+
+    if (exp_date_mm.value === '') {
+      error_exp_date.innerText = 'Can\'t be blank';
+      exp_date_mm.classList.add('error');
+    } else {
+      error_exp_date.innerText = '';
+      exp_date_mm.classList.remove('error');
+      error = false;
+    }
+
+    error = true;
+    if (exp_date_yy.value === '') {
+      error_exp_date.innerText = 'Can\'t be blank';
+      exp_date_yy.classList.add('error');
+    } else {
+      error_exp_date.innerText = '';
+      exp_date_yy.classList.remove('error');
+      error = false;
+    }
+
+    error = true;
+    const cvc = document.querySelector('#form-cvc');
+    const error_cvc = document.querySelector('#error-cvc');
+
+    if (cvc.value === '') {
+      error_cvc.innerText = 'Can\'t be blank';
+      cvc.classList.add('error');
+    } else {
+      error_cvc.innerText = '';
+      cvc.classList.remove('error');
+      error = false;
+    }
+
+    const form_section = document.querySelector('.form-section');
+    const complete_section = document.querySelector('.complete');
+
+    if (!error) {
+      form_section.classList.add('hidden');
+      complete_section.classList.remove('hidden');
+    }
+  }
+  catch (e) {
+    alert('Error: ' + e.message);
+  }
+  event.preventDefault();
+});
+
+
+const continue_btn = document.querySelector('.continue');
+
+continue_btn.addEventListener('click', () => {
+  const form_section = document.querySelector('.form-section');
+  const complete_section = document.querySelector('.complete');
+
+  form_section.classList.remove('hidden');
+  complete_section.classList.add('hidden');
+  location.reload();
+});

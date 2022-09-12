@@ -2,14 +2,17 @@
   --mobile-size: 375px;
   --desktop-size: 1440px;
 
-  --active-input-border1: hsl(249, 99%, 64%);
-  --active-input-border1: hsl(278, 94%, 30%);
+  --active-input-border: linear-gradient(to right,hsl(249, 99%, 64%),hsl(278, 94%, 30%));
   --input-error: hsl(0, 100%, 66%);
 
   --white: hsl(0, 0%, 100%);
   --light-grayish-violet: hsl(270, 3%, 87%);
   --dark-grayish-violet: hsl(279, 6%, 55%);
   --very-dark-violet: hsl(278, 68%, 11%);
+}
+
+.hidden {
+  display: none !important;
 }
 
 body {
@@ -153,6 +156,17 @@ body {
   margin-left: 20%;
   width: 60%;
 }
+.form-section .error-form {
+  display: block;
+  margin-top: 4px;
+  height: 20px;
+  color: var(--input-error);
+  font-size: 14px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 .form-section #form-name,
 .form-section #form-card-number,
 .form-section #form-exp-date__mm,
@@ -162,11 +176,28 @@ body {
   font-size: 18px;
   padding: 14px;
   margin-top: 8px;
-  margin-bottom: 24px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
+  outline: none;
+}
+.form-section #form-name:focus,
+.form-section #form-card-number:focus,
+.form-section #form-exp-date__mm:focus,
+.form-section #form-exp-date__yy:focus,
+.form-section #form-cvc:focus {
+  border-image-source: var(--active-input-border);
+  border-width: 1px;
+  border-image-slice: 1;
+}
+.form-section #form-name.error,
+.form-section #form-card-number.error,
+.form-section #form-exp-date__mm.error,
+.form-section #form-exp-date__yy.error,
+.form-section #form-cvc.error {
+  padding: 14px;
+  border: 1px solid var(--input-error);
 }
 .form-section #form-name,
 .form-section #form-card-number {
@@ -199,10 +230,51 @@ body {
   cursor: pointer;
 }
 
+.complete {
+  grid-area: form;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.complete .complete-content {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.complete .complete-content div {
+  height: 80px;
+  width: 80px;
+  background-image: url(../images/icon-complete.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.complete .complete-content h1 {
+  margin: 10px;
+  color: var(--very-dark-violet);
+  font-size: 36px;
+}
+.complete .complete-content p {
+  margin-top: 0;
+  margin-bottom: 40px;
+  color: var(--dark-grayish-violet);
+}
+.complete .complete-content button {
+  font-family: "Space Grotesk", monospace;
+  font-size: 18px;
+  width: 100%;
+  background-color: var(--very-dark-violet);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 @media (max-width: 1199px) {
   .page {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 380px auto);
+    grid-template-rows: repeat(1, 380px auto);
     grid-template-areas:
       "card"
       "form";
@@ -271,9 +343,9 @@ body {
     font-size: 12px;
   }
 
-  .form-section {
+  /* .form-section {
     margin-top: 30px;
-  }
+  } */
   .form-section form {
     margin: 0;
     padding: 20px;
@@ -281,5 +353,14 @@ body {
   }
   .form-section label {
     font-size: 14px;
+  }
+  
+  /* .complete {
+    margin-top: 70px;
+  } */
+  .complete .complete-content {
+    margin: 0;
+    padding: 20px;
+    width: 100%;
   }
 }

@@ -45,7 +45,7 @@
         </div>
       </section>
       <section class="form-section">
-        <form action="./">
+        <form class="form">
           <label for="name">CARDHOLDER NAME</label>
           <input
             type="text"
@@ -53,6 +53,7 @@
             id="form-name"
             placeholder="e.g. Jane Appleseed"
           />
+          <span class="error-form" id="error-name"></span>
           <br />
           <label for="card-number">CARD NUMBER</label>
           <input
@@ -62,6 +63,7 @@
             placeholder="e.g. 1234 5678 9123 0000"
             pattern="\d{16}|\b\d{16}\b"
           />
+          <span class="error-form" id="error-number"></span>
           <br />
           <div class="details-card">
             <div class="form-exp-date">
@@ -81,6 +83,7 @@
                 placeholder="YY"
                 pattern="\d{2}|\b\d{2}\b"
               />
+              <span class="error-form" id="error-exp-date"></span>
             </div>
 
             <div class="form-cvc">
@@ -92,11 +95,20 @@
                 id="form-cvc"
                 placeholder="e.g 123"
               />
+              <span class="error-form" id="error-cvc"></span>
             </div>
           </div>
           <br />
-          <input type="submit" value="Confirm" class="form-submit" />
+          <button type="submit" class="form-submit">Confirm</button>
         </form>
+      </section>
+      <section class="complete hidden">
+        <div class="complete-content">
+          <div></div>
+          <h1>THANK YOU!</h1>
+          <p>We've added your card details</p>
+          <button class="continue">Continue</button>
+        </div>
       </section>
     </div>
     <script src="./main.js"></script>
