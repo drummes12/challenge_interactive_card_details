@@ -45,7 +45,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Challenge Interactive Card Details](https://github.com/drummes12/challenge_interactive_card_details)
-- Live Site URL: [Interactive Card Details](https://example.com)
+- Live Site URL: [Interactive Card Details](https://631f7c95c2275d5c1d780a07--iridescent-fenglisu-b3bbab.netlify.app)
 
 ## My process
 
